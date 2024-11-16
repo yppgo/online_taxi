@@ -1,6 +1,7 @@
 package com.ypp.service;
 
 import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
+import com.ypp.remote.ServicePassengerUserClient;
 import com.ypp.remote.ServiceVerficationcodeClient;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import ypp.constant.CommonResponseStatus;
 import ypp.dto.ResponseResult;
+import ypp.request.VerficationCodeDTO;
 import ypp.response.NumberCodeResult;
 import ypp.response.TokenResponse;
 
@@ -23,6 +25,8 @@ public class VerificationCodeService {
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private ServiceVerficationcodeClient serviceVerficationcodeClient;
+    @Autowired
+    private ServicePassengerUserClient servicePassengerUserClient;
     /**
      * 生成验证码
      */
@@ -62,6 +66,10 @@ public class VerificationCodeService {
             return ResponseResult.fail(CommonResponseStatus.VERFICARION_CODE_ERROR.getCode(),CommonResponseStatus.VERFICARION_CODE_ERROR.getValue());
 
         }
+        //判断数据库中是否有该用户，没有就创建该用户
+        VerficationCodeDTO verficationCodeDTO = new VerficationCodeDTO();
+        verficationCodeDTO.setPassengerPhone(passengerPhone);
+        servicePassengerUserClient.loginOrRegister(verficationCodeDTO);
         TokenResponse tokenResponse = new TokenResponse();
         tokenResponse.setToken("token_value");
         return ResponseResult.success(tokenResponse);
