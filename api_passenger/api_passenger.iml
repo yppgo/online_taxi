@@ -87,7 +87,6 @@
     <orderEntry type="library" name="Maven: io.github.openfeign:feign-core:10.10.1" level="project" />
     <orderEntry type="library" name="Maven: io.github.openfeign:feign-slf4j:10.10.1" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.32" level="project" />
-    <orderEntry type="module" module-name="internalcommon" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-loadbalancer:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-loadbalancer:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-validation:2.4.13" level="project" />
@@ -114,6 +113,7 @@
     <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.70.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-codec:4.1.70.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.70.Final" level="project" />
+    <orderEntry type="module" module-name="internalcommon" />
     <orderEntry type="library" name="Maven: net.sf.json-lib:json-lib:jdk15:2.4" level="project" />
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.8.0" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />

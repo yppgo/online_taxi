@@ -1,15 +1,13 @@
 package com.ypp.controller;
 
-import com.ypp.request.VerficationCodeDTO;
 import com.ypp.service.VerificationCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.core.ReactiveAdapterRegistry;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ypp.dto.ResponseResult;
+import ypp.request.VerficationCodeDTO;
 
 @RestController
 public class VerficationCodeController {

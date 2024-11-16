@@ -1,4 +1,4 @@
-package com.ypp.request;
+package ypp.request;
 
 import lombok.Data;
 

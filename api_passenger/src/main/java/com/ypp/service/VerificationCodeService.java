@@ -1,11 +1,14 @@
 package com.ypp.service;
 
+import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
 import com.ypp.remote.ServiceVerficationcodeClient;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
+import ypp.constant.CommonResponseStatus;
 import ypp.dto.ResponseResult;
 import ypp.response.NumberCodeResult;
 import ypp.response.TokenResponse;
@@ -20,6 +23,10 @@ public class VerificationCodeService {
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private ServiceVerficationcodeClient serviceVerficationcodeClient;
+    /**
+     * 生成验证码
+     */
+
     public ResponseResult generateCode(String passengerPhone){
         //1.通过调用服务获取验证码,获得验证码
         ResponseResult<NumberCodeResult> numberCode = serviceVerficationcodeClient.getNumberCode(5);
@@ -37,11 +44,24 @@ public class VerificationCodeService {
         //3通过第三方服务发送短信验证码到手机中
         return ResponseResult.success();
     }
+    public String generateKeyByPhone(String passengerPhone){
+        String key = verfication_code_prefix+passengerPhone;
+        return key;
+    }
     public ResponseResult checkCode(String passengerPhone,String verficationCode){
-        System.out.println("根据手机号去读取验证码");
-        System.out.println("校验验证码");
-        System.out.println("判断原来是否有用户并进行对应处理");
-        System.out.println("颁发令牌");
+        //根据手机号查询验证码并进行验证
+        String key = generateKeyByPhone(passengerPhone);
+        String codeRedis = stringRedisTemplate.opsForValue().get(key);
+        System.out.println("redis中的value:"+codeRedis);
+        //校验验证码非空
+        if(StringUtils.isBlank(codeRedis)){
+            return ResponseResult.fail(CommonResponseStatus.VERFICARION_CODE_ERROR.getCode(),CommonResponseStatus.VERFICARION_CODE_ERROR.getValue());
+        }
+        if(!verficationCode.trim().equals(codeRedis.trim())){//用户发的和redis中保存的是否一直
+
+            return ResponseResult.fail(CommonResponseStatus.VERFICARION_CODE_ERROR.getCode(),CommonResponseStatus.VERFICARION_CODE_ERROR.getValue());
+
+        }
         TokenResponse tokenResponse = new TokenResponse();
         tokenResponse.setToken("token_value");
         return ResponseResult.success(tokenResponse);

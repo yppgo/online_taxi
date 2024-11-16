@@ -11,6 +11,7 @@
         <module>api_passenger</module>
         <module>service_verfication</module>
         <module>internal-common</module>
+        <module>service_passenger_user</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -19,6 +20,12 @@
     </parent>
     <packaging>pom</packaging>
     <dependencies>
+        <dependency>
+            <groupId>com.ypp</groupId>
+            <artifactId>internal-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>net.sf.json-lib</groupId>
             <artifactId>json-lib</artifactId>
@@ -34,6 +41,12 @@
     <dependencyManagement>
 
         <dependencies>
+            <dependency>
+                <groupId>com.ypp</groupId>
+                <artifactId>internal-common</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <scope>compile</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>
