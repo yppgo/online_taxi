@@ -6,4 +6,5 @@ import ypp.dto.PassengerUser;
 
 @Repository
 public interface PassengerUserMapper extends BaseMapper<PassengerUser> {
+    //新建接口，注册、扫描mapper
 }
