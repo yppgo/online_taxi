@@ -14,7 +14,7 @@ public enum CommonResponseStatus {
     @Getter
     private int code;
     @Getter
-    private String value,
+    private String value;
     CommonResponseStatus(int code, String value) {
         this.code = code;
         this.value = value;
