@@ -1,9 +1,10 @@
 package com.ypp.service_passenger_user.service;
 
-import com.ypp.service_passenger_user.dto.PassengerUser;
 import com.ypp.service_passenger_user.mapper.PassengerUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ypp.constant.CommonResponseStatus;
+import ypp.dto.PassengerUser;
 import ypp.dto.ResponseResult;
 
 import java.time.LocalDateTime;
@@ -29,11 +30,22 @@ public class UserService {
             passengerUser.setPassengerGender((byte)0);
             passengerUser.setState((byte)0);
             LocalDateTime localDateTime =  LocalDateTime.now();
-            passengerUser.setGmt_create(localDateTime);
-            passengerUser.setGmt_modified(localDateTime);
+            passengerUser.setGmtCreate(localDateTime);
+            passengerUser.setGmtModified(localDateTime);
             passengerUser.setPassengerPhone(passengerPhone);
             passengerUserMapper.insert(passengerUser);
         }
         return ResponseResult.success();
+    }
+    public ResponseResult getUserByPhone(String passengerPhone){
+        Map<String,Object> map = new HashMap<>();
+        map.put("passenger_phone",passengerPhone);
+        List<PassengerUser> passengerUsers = passengerUserMapper.selectByMap(map);
+        if(passengerUsers.size() == 0){
+            return ResponseResult.fail(CommonResponseStatus.USER_NOT_EXIST.getCode(),CommonResponseStatus.USER_NOT_EXIST.getValue());
+        }else{
+            PassengerUser passengerUser = passengerUsers.get(0);
+            return ResponseResult.success(passengerUser);
+        }
     }
 }

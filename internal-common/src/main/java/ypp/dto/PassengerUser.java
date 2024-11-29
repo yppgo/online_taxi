@@ -1,15 +1,16 @@
-package com.ypp.service_passenger_user.dto;
+package ypp.dto;
 
 import lombok.Data;
 
 import java.time.LocalDateTime;
+
 @Data
 public class PassengerUser {
     private long id;
 
-    private LocalDateTime gmt_create;
+    private LocalDateTime gmtCreate;
 
-    private LocalDateTime gmt_modified;
+    private LocalDateTime gmtModified;
 
     private String passengerPhone;
 
@@ -18,4 +19,6 @@ public class PassengerUser {
     private byte passengerGender;
 
     private  byte state;
+
+    private  String profilePhoto;
 }

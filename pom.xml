@@ -12,6 +12,8 @@
         <module>service_verfication</module>
         <module>internal-common</module>
         <module>service_passenger_user</module>
+        <module>service_price</module>
+        <module>service_map</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
