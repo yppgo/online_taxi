@@ -14,6 +14,9 @@
         <module>service_passenger_user</module>
         <module>service_price</module>
         <module>service_map</module>
+        <module>service_driver_user</module>
+        <module>api_boss</module>
+        <module>api_driver</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
