@@ -3,6 +3,7 @@ package ypp.constant;
 public class AmapConfigConstant {
     public static final String DIRECTION_URL = "https://restapi.amap.com/v3/direction/driving";
     public static final String DISTRICT_URL = "https://restapi.amap.com/v3/config/district";
+    public static final String ADD_SERVICE_URL = "https://tsapi.amap.com/v1/track/service/add";
 
     public static final String STATUS = "status";
 

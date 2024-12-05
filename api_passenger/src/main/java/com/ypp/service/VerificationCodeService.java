@@ -42,7 +42,7 @@ public class VerificationCodeService {
         System.out.println("远程调用获取的验证码为："+numberCode1);
         //2将验证码存储到redis中
         //设置key
-        String key = RedisPrefixUtils.generateKeyByPhone(passengerPhone);
+        String key = RedisPrefixUtils.generateKeyByPhone(passengerPhone,IdentityConstant.PASSENGER_IDENTITY);
         try {
             stringRedisTemplate.opsForValue().set(key, numberCode1+"", 2, TimeUnit.MINUTES);
         } catch (Exception e) {
@@ -55,7 +55,7 @@ public class VerificationCodeService {
 
     public ResponseResult checkCode(String passengerPhone,String verficationCode){
         //根据手机号查询验证码并进行验证
-        String key = RedisPrefixUtils.generateKeyByPhone(passengerPhone);
+        String key = RedisPrefixUtils.generateKeyByPhone(passengerPhone,IdentityConstant.PASSENGER_IDENTITY);
         String codeRedis = stringRedisTemplate.opsForValue().get(key);
         System.out.println("redis中的value:"+codeRedis);
         //校验验证码非空

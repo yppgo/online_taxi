@@ -1,0 +1,16 @@
+{
+    "errcode": 10000,
+    "errmsg": "OK",
+    "data": {
+        "name": "飞滴出行service",
+        "sid": 1043655
+    }
+}
+{
+    "errcode": 10000,
+    "errmsg": "OK",
+    "data": {
+        "name": "测试用例1",
+        "sid": 1043092
+    }
+}

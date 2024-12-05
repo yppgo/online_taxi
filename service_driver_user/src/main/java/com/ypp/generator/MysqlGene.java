@@ -15,7 +15,7 @@ public class MysqlGene {
             builder.parent("com.ypp").pathInfo(Collections.singletonMap(OutputFile.mapperXml,
                     "C:/java项目/新建文件夹/online_taxi/service_driver_user/src/main/java/com/ypp/mapper"));
         }).strategyConfig(builder -> {
-            builder.addInclude("driver_car_binding_relationship");
+            builder.addInclude("driver_user_work_status");
         }).templateEngine(new FreemarkerTemplateEngine()).execute();
     }
 }
