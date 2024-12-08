@@ -17,6 +17,7 @@
         <module>service_driver_user</module>
         <module>api_boss</module>
         <module>api_driver</module>
+        <module>service_order</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

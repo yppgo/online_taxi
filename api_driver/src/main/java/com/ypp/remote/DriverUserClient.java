@@ -27,4 +27,7 @@ public interface DriverUserClient {
     //远程调用查询司机信息
     @RequestMapping(method = RequestMethod.GET,value = "/check_drive/{driverPhone}")
     public ResponseResult<DriverUserExistsResponse> getDriverUser(@PathVariable("driverPhone") String driverPhone);
+    //远程调用，查询车辆信息
+    @RequestMapping(method = RequestMethod.GET,value = "/car")
+    public ResponseResult<Car> getCarById(@RequestParam Long carId);
 }

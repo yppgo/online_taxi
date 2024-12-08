@@ -1,18 +1,15 @@
 package com.ypp;
 
-
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@MapperScan("com.ypp.mapper")
 @EnableDiscoveryClient
-@EnableFeignClients
-public class ServiceDriverUserApplication {
+@MapperScan("com.ypp.mapper")
+public class ServiceOrderApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceDriverUserApplication.class);
+        SpringApplication.run(ServiceOrderApplication.class);
     }
 }

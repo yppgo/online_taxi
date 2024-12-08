@@ -17,3 +17,4 @@ spring:
 #自定义的key和value
 amp:
   key: 650e2c77c41b3fb8bfe0ac9610140dee
+  sid: 1043655
